@@ -1,3 +1,6 @@
+import axios from "axios";
+import { useState } from "react";
+
 function Header() {
   return (
     <header>
@@ -28,31 +31,18 @@ function PostsNew() {
   );
 }
 
-function PostsIndex() {
+function PostsIndex(props) {
+  console.log([props]);
   return (
-    <div id="posts-index">
-      <h1>All posts</h1>
-      <h2>Pic 1</h2>
-      <p>
-        The creature-for I am very angry with him-made a low bow and with a grin the most malicious I ever saw, "My
-        Lord," said he, "far be it from me to accuse the lady, for having the discernment to distinguish and prefer-the
-        superior attractions of your Lordship."
-      </p>
-      <img
-        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSsCPPySolReHKL07MQRcuy1k2v11wjNB7AFg&usqp=CAU"
-        width="300px"
-      ></img>{" "}
-      <br></br>
-      <h2>Pic 2</h2>
-      <p>
-        Was ever any thing so provoking? I was ready to die with shame. "What a coxcomb!" exclaimed Lord Orville: while
-        I, without knowing what I did, rose hastily, and moving off, "I can't imagine," cried I, "where Mrs. Mirvan has
-        hid herself!"
-      </p>
-      <img
-        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT-uoOyYDvsoZ2Hx_4ldQoVCYuNgrhXO8XLFKJgCdPUqGvF9AF2VilTvD0WVMjglPrO038&usqp=CAU"
-        width="300px"
-      ></img>
+    <div>
+      {props.posts.map((post) => (
+        <div key={post.id} className="posts">
+          <h2>{post.title}</h2>
+          <img src={post.image} alt="" />
+          <p>Body: {post.body}</p>
+          <button>More Info</button>
+        </div>
+      ))}
     </div>
   );
 }
@@ -68,10 +58,18 @@ function Footer() {
 }
 
 function Content() {
+  const [posts, setPosts] = useState([]);
+
+  const handleIndexPosts = () => {
+    axios.get("http://localhost:3000/posts.json").then((response) => {
+      setPosts(response.data);
+    });
+  };
   return (
     <div>
       <PostsNew />
-      <PostsIndex />
+      <button onClick={handleIndexPosts}>Load Posts</button>
+      <PostsIndex posts={posts} />
     </div>
   );
 }
