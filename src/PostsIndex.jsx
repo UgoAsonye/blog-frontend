@@ -1,7 +1,7 @@
 export function PostsIndex(props) {
   console.log([props]);
   return (
-    <div>
+    <div id="posts-index">
       {props.posts.map((post) => (
         <div key={post.id} className="posts">
           <h2>{post.title}</h2>

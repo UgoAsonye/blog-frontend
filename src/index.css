@@ -1,3 +1,15 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;500&display=swap');
+
+
+
+#root{
+  font-family: 'Cormorant Garamond';
+  background-image: url(./assets/just-waves.webp);
+}
+
+
+
 #posts-index img {
   width: 300px;
 }
