@@ -1,3 +1,5 @@
+import { LogoutLink } from "./LogoutLink";
+
 export function Header() {
   return (
     // <header>
@@ -36,6 +38,9 @@ export function Header() {
                 <a className="nav-link" href="#posts-index">
                   All Posts
                 </a>
+              </li>
+              <li className="nav-item">
+                <LogoutLink />
               </li>
             </ul>
           </div>
