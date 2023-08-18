@@ -38,6 +38,7 @@ export function Signup() {
             value={name}
             name="name"
             type="text"
+            maxLength={20}
             onChange={(event) => setName(event.target.value)}
           />
           <small>{20 - name.length} character remaining </small>
