@@ -9,9 +9,9 @@ export function Header() {
     <header>
       <nav className="navbar navbar-expand-lg bg-light">
         <div className="container-fluid">
-          <a className="navbar-brand" href="#">
+          <Link className="navbar-brand" to="/">
             Blog
-          </a>
+          </Link>
           <button
             className="navbar-toggler"
             type="button"
@@ -26,9 +26,9 @@ export function Header() {
           <div className="collapse navbar-collapse" id="navbarNav">
             <ul className="navbar-nav">
               <li className="nav-item">
-                <a className="nav-link active" aria-current="page" href="#">
+                <Link className="nav-link active" aria-current="page" to="/">
                   Home
-                </a>
+                </Link>
               </li>
               <li className="nav-item">
                 <Link to="/about" className="nav-link">
@@ -37,17 +37,27 @@ export function Header() {
               </li>
 
               <li className="nav-item">
-                <a className="nav-link" href="#posts-new">
+                <Link className="nav-link" to="/posts/new">
                   New Post
-                </a>
+                </Link>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="#posts-index">
+                <Link className="nav-link" to="/">
                   All Posts
-                </a>
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link to="/login" className="nav-link">
+                  Login <span className="sr-only"></span>
+                </Link>
               </li>
               <li className="nav-item">
                 <LogoutLink />
+              </li>
+              <li className="nav-item">
+                <Link className="nav-link" to="/signup">
+                  Signup
+                </Link>
               </li>
             </ul>
           </div>

@@ -25,6 +25,7 @@ export function Content() {
     axios.post("http://localhost:3000/posts.json", params).then((response) => {
       console.log(response.data);
       setPosts([...posts, response.data]);
+      window.location.href = "/";
     });
   };
 
@@ -63,14 +64,15 @@ export function Content() {
   useEffect(handleIndexPosts, []);
   return (
     <div className="container">
-      <Signup />
       <Routes>
+        <Route path="/signup" element={<Signup />} />
         <Route path="/about" element={<About />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/posts/new" element={<PostsNew onCreatePost={handleCreatePost} />} />
+        <Route path="/" element={<PostsIndex posts={posts} onShowPost={handleShowPost} />} />
       </Routes>
-      <Login />
       <LogoutLink />
-      <PostsNew onCreatePost={handleCreatePost} />
-      <PostsIndex posts={posts} onShowPost={handleShowPost} />
+
       <Modal show={isPostsShowVisible} onClose={handleClose}>
         <PostsShow
           post={currentPost}
