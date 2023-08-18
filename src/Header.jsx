@@ -1,4 +1,5 @@
 import { LogoutLink } from "./LogoutLink";
+import { Link } from "react-router-dom";
 
 export function Header() {
   return (
@@ -29,6 +30,12 @@ export function Header() {
                   Home
                 </a>
               </li>
+              <li className="nav-item">
+                <Link to="/about" className="nav-link">
+                  About
+                </Link>
+              </li>
+
               <li className="nav-item">
                 <a className="nav-link" href="#posts-new">
                   New Post
