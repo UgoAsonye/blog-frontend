@@ -46,19 +46,25 @@ export function Header() {
                   All Posts
                 </Link>
               </li>
-              <li className="nav-item">
-                <Link to="/login" className="nav-link">
-                  Login <span className="sr-only"></span>
-                </Link>
-              </li>
-              <li className="nav-item">
-                <LogoutLink />
-              </li>
-              <li className="nav-item">
-                <Link className="nav-link" to="/signup">
-                  Signup
-                </Link>
-              </li>
+
+              {localStorage.jwt === undefined ? (
+                <>
+                  <li className="nav-item">
+                    <Link to="/login" className="nav-link">
+                      Login <span className="sr-only"></span>
+                    </Link>
+                  </li>
+                  <li className="nav-item">
+                    <Link className="nav-link" to="/signup">
+                      Signup
+                    </Link>
+                  </li>
+                </>
+              ) : (
+                <li className="nav-item">
+                  <LogoutLink />
+                </li>
+              )}
             </ul>
           </div>
         </div>
